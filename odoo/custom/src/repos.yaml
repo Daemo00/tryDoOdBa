@@ -1,0 +1,19 @@
+# See https://github.com/Tecnativa/doodba#optodoocustomsrcreposyaml
+# Odoo must be in the `odoo` folder for Doodba to work
+odoo:
+  defaults:
+    # This will use git shallow clones.
+    # $DEPTH_DEFAULT is 1 in test and prod, but 100 in devel.
+    # $DEPTH_MERGE is always 100.
+    # You can use any integer value, OTOH.
+    depth: $DEPTH_DEFAULT
+  remotes:
+    ocb: https://github.com/OCA/OCB.git
+    odoo: https://github.com/odoo/odoo.git
+    openupgrade: https://github.com/OCA/OpenUpgrade.git
+  # $ODOO_VERSION is... the Odoo version! "11.0" or similar
+  target: ocb $ODOO_VERSION
+  merges:
+    - ocb $ODOO_VERSION
+    # Example of a merge of the PR with the number <PR>
+    # - oca refs/pull/<PR>/head
