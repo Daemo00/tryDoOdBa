@@ -14,7 +14,7 @@ odoo:
   # $ODOO_VERSION is... the Odoo version! "11.0" or similar
   target: ocb $ODOO_VERSION
   merges:
-    - ocb $ODOO_VERSION
+    - odoo $ODOO_VERSION
     # Example of a merge of the PR with the number <PR>
     # - oca refs/pull/<PR>/head
 
