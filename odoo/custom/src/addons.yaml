@@ -1,2 +1,13 @@
+repos/partner-contact:
+  - partner_contact_birthdate
+  - partner_contact_gender
+  - partner_contact_personal_information_page
+
 repos/web:
   - web_dark_mode
+  - web_m2x_options
+  - web_timeline
+  - web_widget_x2many_2d_matrix
+
+repos/daemo00-odoo-modules:
+  - event_tournament

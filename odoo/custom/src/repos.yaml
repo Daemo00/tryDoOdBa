@@ -18,6 +18,24 @@ odoo:
     # Example of a merge of the PR with the number <PR>
     # - oca refs/pull/<PR>/head
 
+repos/daemo00-odoo-modules:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    origin: https://github.com/Daemo00/odoo-modules.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+
+repos/partner-contact:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    origin: https://github.com/OCA/partner-contact.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+
 repos/web:
   defaults:
     depth: $DEPTH_DEFAULT
