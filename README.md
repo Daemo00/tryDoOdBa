@@ -1,5 +1,5 @@
 [![Doodba deployment](https://img.shields.io/badge/deployment-doodba-informational)](https://github.com/Tecnativa/doodba)
-[![Last template update](https://img.shields.io/badge/last%20template%20update-v5.2.0-informational)](https://github.com/Tecnativa/doodba-copier-template/tree/v5.2.0)
+[![Last template update](https://img.shields.io/badge/last%20template%20update-v5.3.0-informational)](https://github.com/Tecnativa/doodba-copier-template/tree/v5.3.0)
 [![Odoo](https://img.shields.io/badge/odoo-v16.0-a3478a)](https://github.com/odoo/odoo/tree/16.0)
 [![Deployment data](https://img.shields.io/badge/%F0%9F%8C%90%20prod-homegage.it-green)](http://homegage.it)
 [![Deployment data](https://img.shields.io/badge/%E2%9A%92%20demo-homegage.it-yellow)](http://homegage.it)

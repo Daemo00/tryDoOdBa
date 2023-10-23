@@ -6,6 +6,7 @@ services:
       file: common.yaml
       service: odoo
     restart: unless-stopped
+    hostname: "homegage.it"
     env_file:
       - .docker/odoo.env
       - .docker/db-access.env
@@ -26,13 +27,13 @@ services:
         "X-Robots-Tag:noindex, nofollow"
       traefik.forbiddenCrawlers-0.frontend.rule: Host:homegage.it;Path:/web,/web/{anything:.*},/website/info,/website/info/{anything:.*}
       traefik.main-0.frontend.rule: Host:homegage.it
-      traefik.longpolling-0.frontend.rule: Host:homegage.it;Path:/longpolling/{anything:.*}
+      traefik.longpolling-0.frontend.rule: Host:homegage.it;Path:/websocket,/websocket/{anything:.*}
       traefik.longpolling-0.port: 8072
-      ? traefik.http.middlewares.myproject-odoo-16-0-prod-buffering.buffering.retryExpression
-      : IsNetworkError() && Attempts() < 5
+      traefik.http.middlewares.myproject-odoo-16-0-prod-buffering.buffering.retryExpression:
+        IsNetworkError() && Attempts() < 5
       traefik.http.middlewares.myproject-odoo-16-0-prod-compress.compress: "true"
-      ? traefik.http.middlewares.myproject-odoo-16-0-prod-forbid-crawlers.headers.customResponseHeaders.X-Robots-Tag
-      : "noindex, nofollow"
+      traefik.http.middlewares.myproject-odoo-16-0-prod-forbid-crawlers.headers.customResponseHeaders.X-Robots-Tag:
+        "noindex, nofollow"
       traefik.http.middlewares.myproject-odoo-16-0-prod-addSTS.headers.forceSTSHeader: "true"
       traefik.http.middlewares.myproject-odoo-16-0-prod-forceSecure.redirectScheme.scheme: https
       traefik.http.middlewares.myproject-odoo-16-0-prod-forceSecure.redirectScheme.permanent: "true"
@@ -51,12 +52,12 @@ services:
       traefik.http.routers.myproject-odoo-16-0-prod-main-secure-0.tls: "true"
       traefik.http.routers.myproject-odoo-16-0-prod-main-secure-0.tls.certResolver: letsencrypt
       traefik.http.routers.myproject-odoo-16-0-prod-longpolling-0.rule:
-        Host(`homegage.it`) && PathPrefix(`/longpolling/`)
+        Host(`homegage.it`) && Path(`/websocket`)
       traefik.http.routers.myproject-odoo-16-0-prod-longpolling-0.service: myproject-odoo-16-0-prod-longpolling
       traefik.http.routers.myproject-odoo-16-0-prod-longpolling-0.middlewares:
         myproject-odoo-16-0-prod-addSTS, myproject-odoo-16-0-prod-forceSecure
       traefik.http.routers.myproject-odoo-16-0-prod-longpolling-secure-0.rule:
-        Host(`homegage.it`) && PathPrefix(`/longpolling/`)
+        Host(`homegage.it`) && Path(`/websocket`)
       traefik.http.routers.myproject-odoo-16-0-prod-longpolling-secure-0.service: myproject-odoo-16-0-prod-longpolling
       traefik.http.routers.myproject-odoo-16-0-prod-longpolling-secure-0.middlewares:
         myproject-odoo-16-0-prod-addSTS, myproject-odoo-16-0-prod-forceSecure
@@ -74,8 +75,8 @@ services:
         Host(`homegage.it`) && (PathPrefix(`/web/`, `/website/info/`) || Path(`/web`,
         `/website/info`))
       traefik.http.routers.myproject-odoo-16-0-prod-forbiddenCrawlers-secure-0.service: myproject-odoo-16-0-prod-main
-      ? traefik.http.routers.myproject-odoo-16-0-prod-forbiddenCrawlers-secure-0.middlewares
-      : myproject-odoo-16-0-prod-addSTS, myproject-odoo-16-0-prod-buffering,
+      traefik.http.routers.myproject-odoo-16-0-prod-forbiddenCrawlers-secure-0.middlewares:
+        myproject-odoo-16-0-prod-addSTS, myproject-odoo-16-0-prod-buffering,
         myproject-odoo-16-0-prod-compress, myproject-odoo-16-0-prod-forbid-crawlers,
         myproject-odoo-16-0-prod-forceSecure
       traefik.http.routers.myproject-odoo-16-0-prod-forbiddenCrawlers-secure-0.tls: "true"
