@@ -36,7 +36,7 @@ repos:
         args:
           - --addons-dir=odoo/custom/src/private
           - --org-name=Daemo00
-          - --repo-name=myproject-odoo
+          - --repo-name=Homegage
           - --gen-html
           - --branch=16.0
           - --template-filename=.module-readme.rst.j2

@@ -15,7 +15,7 @@ services:
       SMTP_PORT: "1025"
       SMTP_SERVER: smtplocal
     restart: unless-stopped
-    hostname: "homegage.it"
+    hostname: "test.homegage.it"
     depends_on:
       - db
       - smtp
@@ -24,44 +24,44 @@ services:
       globalwhitelist_shared:
       inverseproxy_shared:
     labels:
-      doodba.domain.main: "homegage.it"
+      doodba.domain.main: "test.homegage.it"
       traefik.enable: "true"
-      traefik.domain: "homegage.it"
+      traefik.domain: "test.homegage.it"
       traefik.forbiddenCrawlers-0.frontend.headers.customResponseHeaders:
         "X-Robots-Tag:noindex, nofollow"
-      traefik.forbiddenCrawlers-0.frontend.rule: Host:homegage.it;Path:/{anything:.*}
-      traefik.longpolling-0.frontend.rule: Host:homegage.it;Path:/websocket,/websocket/{anything:.*}
+      traefik.forbiddenCrawlers-0.frontend.rule: Host:test.homegage.it;Path:/{anything:.*}
+      traefik.longpolling-0.frontend.rule: Host:test.homegage.it;Path:/websocket,/websocket/{anything:.*}
       traefik.longpolling-0.port: 8072
-      traefik.http.services.myproject-odoo-16-0-test-main.loadbalancer.server.port: 8069
-      traefik.http.services.myproject-odoo-16-0-test-longpolling.loadbalancer.server.port: 8072
-      traefik.http.routers.myproject-odoo-16-0-test-longpolling-0.rule:
-        Host(`homegage.it`) && Path(`/websocket`)
-      traefik.http.routers.myproject-odoo-16-0-test-longpolling-0.service: myproject-odoo-16-0-test-longpolling
-      traefik.http.routers.myproject-odoo-16-0-test-longpolling-0.middlewares:
-        myproject-odoo-16-0-test-addSTS, myproject-odoo-16-0-test-forceSecure
-      traefik.http.routers.myproject-odoo-16-0-test-longpolling-secure-0.rule:
-        Host(`homegage.it`) && Path(`/websocket`)
-      traefik.http.routers.myproject-odoo-16-0-test-longpolling-secure-0.service: myproject-odoo-16-0-test-longpolling
-      traefik.http.routers.myproject-odoo-16-0-test-longpolling-secure-0.middlewares:
-        myproject-odoo-16-0-test-addSTS, myproject-odoo-16-0-test-forceSecure
-      traefik.http.routers.myproject-odoo-16-0-test-longpolling-secure-0.tls: "true"
-      traefik.http.routers.myproject-odoo-16-0-test-longpolling-secure-0.tls.certResolver: letsencrypt
-      traefik.http.routers.myproject-odoo-16-0-test-forbiddenCrawlers-0.rule:
-        Host(`homegage.it`) && (PathPrefix(`/`))
-      traefik.http.routers.myproject-odoo-16-0-test-forbiddenCrawlers-0.service: myproject-odoo-16-0-test-main
-      traefik.http.routers.myproject-odoo-16-0-test-forbiddenCrawlers-0.middlewares:
-        myproject-odoo-16-0-test-addSTS, myproject-odoo-16-0-test-buffering,
-        myproject-odoo-16-0-test-compress, myproject-odoo-16-0-test-forbid-crawlers,
-        myproject-odoo-16-0-test-forceSecure
-      traefik.http.routers.myproject-odoo-16-0-test-forbiddenCrawlers-secure-0.rule:
-        Host(`homegage.it`) && (PathPrefix(`/`))
-      traefik.http.routers.myproject-odoo-16-0-test-forbiddenCrawlers-secure-0.service: myproject-odoo-16-0-test-main
-      traefik.http.routers.myproject-odoo-16-0-test-forbiddenCrawlers-secure-0.middlewares:
-        myproject-odoo-16-0-test-addSTS, myproject-odoo-16-0-test-buffering,
-        myproject-odoo-16-0-test-compress, myproject-odoo-16-0-test-forbid-crawlers,
-        myproject-odoo-16-0-test-forceSecure
-      traefik.http.routers.myproject-odoo-16-0-test-forbiddenCrawlers-secure-0.tls: "true"
-      traefik.http.routers.myproject-odoo-16-0-test-forbiddenCrawlers-secure-0.tls.certResolver: letsencrypt
+      traefik.http.services.Homegage-16-0-test-main.loadbalancer.server.port: 8069
+      traefik.http.services.Homegage-16-0-test-longpolling.loadbalancer.server.port: 8072
+      traefik.http.routers.Homegage-16-0-test-longpolling-0.rule:
+        Host(`test.homegage.it`) && Path(`/websocket`)
+      traefik.http.routers.Homegage-16-0-test-longpolling-0.service: Homegage-16-0-test-longpolling
+      traefik.http.routers.Homegage-16-0-test-longpolling-0.middlewares:
+        Homegage-16-0-test-addSTS, Homegage-16-0-test-forceSecure
+      traefik.http.routers.Homegage-16-0-test-longpolling-secure-0.rule:
+        Host(`test.homegage.it`) && Path(`/websocket`)
+      traefik.http.routers.Homegage-16-0-test-longpolling-secure-0.service: Homegage-16-0-test-longpolling
+      traefik.http.routers.Homegage-16-0-test-longpolling-secure-0.middlewares:
+        Homegage-16-0-test-addSTS, Homegage-16-0-test-forceSecure
+      traefik.http.routers.Homegage-16-0-test-longpolling-secure-0.tls: "true"
+      traefik.http.routers.Homegage-16-0-test-longpolling-secure-0.tls.certResolver: letsencrypt
+      traefik.http.routers.Homegage-16-0-test-forbiddenCrawlers-0.rule:
+        Host(`test.homegage.it`) && (PathPrefix(`/`))
+      traefik.http.routers.Homegage-16-0-test-forbiddenCrawlers-0.service: Homegage-16-0-test-main
+      traefik.http.routers.Homegage-16-0-test-forbiddenCrawlers-0.middlewares:
+        Homegage-16-0-test-addSTS, Homegage-16-0-test-buffering,
+        Homegage-16-0-test-compress, Homegage-16-0-test-forbid-crawlers,
+        Homegage-16-0-test-forceSecure
+      traefik.http.routers.Homegage-16-0-test-forbiddenCrawlers-secure-0.rule:
+        Host(`test.homegage.it`) && (PathPrefix(`/`))
+      traefik.http.routers.Homegage-16-0-test-forbiddenCrawlers-secure-0.service: Homegage-16-0-test-main
+      traefik.http.routers.Homegage-16-0-test-forbiddenCrawlers-secure-0.middlewares:
+        Homegage-16-0-test-addSTS, Homegage-16-0-test-buffering,
+        Homegage-16-0-test-compress, Homegage-16-0-test-forbid-crawlers,
+        Homegage-16-0-test-forceSecure
+      traefik.http.routers.Homegage-16-0-test-forbiddenCrawlers-secure-0.tls: "true"
+      traefik.http.routers.Homegage-16-0-test-forbiddenCrawlers-secure-0.tls.certResolver: letsencrypt
     command:
       - odoo
       - --workers=2
@@ -86,41 +86,39 @@ services:
           - smtplocal
       inverseproxy_shared:
     labels:
-      doodba.domain.main: "homegage.it"
+      doodba.domain.main: "test.homegage.it"
       traefik.docker.network: "inverseproxy_shared"
       traefik.enable: "true"
       traefik.frontend.passHostHeader: "true"
-      traefik.mailhog-0.frontend.rule: Host:homegage.it;PathPrefixStrip:/smtpfake/
+      traefik.mailhog-0.frontend.rule: Host:test.homegage.it;PathPrefixStrip:/smtpfake/
       traefik.mailhog-0.port: 8025
       # Mailhog service
-      traefik.http.middlewares.myproject-odoo-16-0-test-mailhog-stripprefix.stripPrefix.prefixes: /smtpfake/
-      traefik.http.services.myproject-odoo-16-0-test-mailhog.loadbalancer.server.port: 8025
-      traefik.http.middlewares.myproject-odoo-16-0-test-buffering.buffering.retryExpression:
+      traefik.http.middlewares.Homegage-16-0-test-mailhog-stripprefix.stripPrefix.prefixes: /smtpfake/
+      traefik.http.services.Homegage-16-0-test-mailhog.loadbalancer.server.port: 8025
+      traefik.http.middlewares.Homegage-16-0-test-buffering.buffering.retryExpression:
         IsNetworkError() && Attempts() < 5
-      traefik.http.middlewares.myproject-odoo-16-0-test-compress.compress: "true"
-      traefik.http.middlewares.myproject-odoo-16-0-test-forbid-crawlers.headers.customResponseHeaders.X-Robots-Tag:
+      traefik.http.middlewares.Homegage-16-0-test-compress.compress: "true"
+      traefik.http.middlewares.Homegage-16-0-test-forbid-crawlers.headers.customResponseHeaders.X-Robots-Tag:
         "noindex, nofollow"
-      traefik.http.middlewares.myproject-odoo-16-0-test-addSTS.headers.forceSTSHeader: "true"
-      traefik.http.middlewares.myproject-odoo-16-0-test-forceSecure.redirectScheme.scheme: https
-      traefik.http.middlewares.myproject-odoo-16-0-test-forceSecure.redirectScheme.permanent: "true"
-      traefik.http.routers.myproject-odoo-16-0-test-mailhog-0.rule:
-        Host(`homegage.it`) && PathPrefix(`/smtpfake/`)
-      traefik.http.routers.myproject-odoo-16-0-test-mailhog-0.service: myproject-odoo-16-0-test-mailhog
-      traefik.http.routers.myproject-odoo-16-0-test-mailhog-0.middlewares:
-        myproject-odoo-16-0-test-addSTS, myproject-odoo-16-0-test-buffering,
-        myproject-odoo-16-0-test-compress, myproject-odoo-16-0-test-forbid-crawlers,
-        myproject-odoo-16-0-test-forceSecure,
-        myproject-odoo-16-0-test-mailhog-stripprefix
-      traefik.http.routers.myproject-odoo-16-0-test-mailhog-secure-0.rule:
-        Host(`homegage.it`) && PathPrefix(`/smtpfake/`)
-      traefik.http.routers.myproject-odoo-16-0-test-mailhog-secure-0.service: myproject-odoo-16-0-test-mailhog
-      traefik.http.routers.myproject-odoo-16-0-test-mailhog-secure-0.middlewares:
-        myproject-odoo-16-0-test-addSTS, myproject-odoo-16-0-test-buffering,
-        myproject-odoo-16-0-test-compress, myproject-odoo-16-0-test-forbid-crawlers,
-        myproject-odoo-16-0-test-forceSecure,
-        myproject-odoo-16-0-test-mailhog-stripprefix
-      traefik.http.routers.myproject-odoo-16-0-test-mailhog-secure-0.tls: "true"
-      traefik.http.routers.myproject-odoo-16-0-test-mailhog-secure-0.tls.certResolver: letsencrypt
+      traefik.http.middlewares.Homegage-16-0-test-addSTS.headers.forceSTSHeader: "true"
+      traefik.http.middlewares.Homegage-16-0-test-forceSecure.redirectScheme.scheme: https
+      traefik.http.middlewares.Homegage-16-0-test-forceSecure.redirectScheme.permanent: "true"
+      traefik.http.routers.Homegage-16-0-test-mailhog-0.rule:
+        Host(`test.homegage.it`) && PathPrefix(`/smtpfake/`)
+      traefik.http.routers.Homegage-16-0-test-mailhog-0.service: Homegage-16-0-test-mailhog
+      traefik.http.routers.Homegage-16-0-test-mailhog-0.middlewares:
+        Homegage-16-0-test-addSTS, Homegage-16-0-test-buffering,
+        Homegage-16-0-test-compress, Homegage-16-0-test-forbid-crawlers,
+        Homegage-16-0-test-forceSecure, Homegage-16-0-test-mailhog-stripprefix
+      traefik.http.routers.Homegage-16-0-test-mailhog-secure-0.rule:
+        Host(`test.homegage.it`) && PathPrefix(`/smtpfake/`)
+      traefik.http.routers.Homegage-16-0-test-mailhog-secure-0.service: Homegage-16-0-test-mailhog
+      traefik.http.routers.Homegage-16-0-test-mailhog-secure-0.middlewares:
+        Homegage-16-0-test-addSTS, Homegage-16-0-test-buffering,
+        Homegage-16-0-test-compress, Homegage-16-0-test-forbid-crawlers,
+        Homegage-16-0-test-forceSecure, Homegage-16-0-test-mailhog-stripprefix
+      traefik.http.routers.Homegage-16-0-test-mailhog-secure-0.tls: "true"
+      traefik.http.routers.Homegage-16-0-test-mailhog-secure-0.tls.certResolver: letsencrypt
     volumes:
       - "smtpconf:/etc/mailhog:ro,z"
     entrypoint: [sh, -c]

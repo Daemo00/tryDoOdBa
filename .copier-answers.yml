@@ -8,7 +8,7 @@ domains_prod:
       - homegage.it
 domains_test:
   - hosts:
-      - homegage.it
+      - test.homegage.it
 gitlab_url: ""
 odoo_dbfilter: ^prod
 odoo_initial_lang: it_IT
@@ -25,6 +25,6 @@ postgres_username: odoo
 postgres_version: "15"
 project_author: Daemo00
 project_license: AGPL-3.0-or-later
-project_name: myproject-odoo
+project_name: Homegage
 smtp_default_from: ""
 smtp_relay_host: ""
