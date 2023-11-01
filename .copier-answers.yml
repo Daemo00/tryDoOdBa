@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: v5.3.0
+_commit: v5.3.2
 _src_path: gh:Tecnativa/doodba-copier-template
 backup_dst: ""
 cidr_whitelist: null
@@ -14,7 +14,7 @@ odoo_dbfilter: ^prod
 odoo_initial_lang: it_IT
 odoo_listdb: false
 odoo_oci_image: ""
-odoo_proxy: traefik
+odoo_proxy: other
 odoo_version: 16.0
 paths_without_crawlers:
   - /web
